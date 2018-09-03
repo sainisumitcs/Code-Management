@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN" monitorInterval="30">
+
+
+
+	<Properties>
+		<Property name="logPath">C:\logs
+		</Property>
+
+	</Properties>
+
+
+	<appenders>
+		<RollingFile name="ApplicationLog" fileName="${logPath}/jetty_app.log"
+			filePattern="${logPath}/jetty_app-%d{MM-dd-yyyy-HH}.log">
+			<PatternLayout pattern="%-7d{yyyy-MM-dd HH:mm:ss.SSS} [%p] %c{1},%M-%L: %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+		</RollingFile>
+
+	</appenders>
+
+	<Loggers>
+
+		<Logger name="com.action" level="info" additivity="true"
+			includeLocation="true">
+			<AppenderRef ref="ApplicationLog" />
+		</Logger>
+
+
+
+	</Loggers>
+
+</configuration>
